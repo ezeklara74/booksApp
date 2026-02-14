@@ -1,0 +1,139 @@
+(node:22520) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)  
+FAIL src/__tests__/posts.test.js (40.757 s)
+  creating posts
+    × with all parameters should succeed (5009 ms)
+    × without title should fail (5003 ms)
+    × with minimal parameters should succeed (5010 ms)
+  listing posts
+    × should return all posts (5002 ms)
+    × should return posts sorted by creation date descending by default (5005 ms)
+    × should take into account provided sorting options (5010 ms)        
+    × should be able to filter posts by author (5006 ms)
+    × should be able to filter post by tag (5014 ms)
+
+  ● creating posts › with all parameters should succeed
+
+    thrown: "Exceeded timeout of 5000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      63 | let createdSamplePosts = []
+      64 |
+    > 65 | beforeEach(async () => {
+         | ^
+      66 |   await Post.deleteMany({})
+      67 |   createdSamplePosts = []
+      68 |   for (const post of samplePosts) {
+
+      at beforeEach (src/__tests__/posts.test.js:65:1)
+
+  ● creating posts › without title should fail
+
+    thrown: "Exceeded timeout of 5000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      63 | let createdSamplePosts = []
+      64 |
+    > 65 | beforeEach(async () => {
+         | ^
+      66 |   await Post.deleteMany({})
+      67 |   createdSamplePosts = []
+      68 |   for (const post of samplePosts) {
+
+      at beforeEach (src/__tests__/posts.test.js:65:1)
+
+  ● creating posts › with minimal parameters should succeed
+
+    thrown: "Exceeded timeout of 5000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      63 | let createdSamplePosts = []
+      64 |
+    > 65 | beforeEach(async () => {
+         | ^
+      66 |   await Post.deleteMany({})
+      67 |   createdSamplePosts = []
+      68 |   for (const post of samplePosts) {
+
+      at beforeEach (src/__tests__/posts.test.js:65:1)
+
+  ● listing posts › should return all posts
+
+    thrown: "Exceeded timeout of 5000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      63 | let createdSamplePosts = []
+      64 |
+    > 65 | beforeEach(async () => {
+         | ^
+      66 |   await Post.deleteMany({})
+      67 |   createdSamplePosts = []
+      68 |   for (const post of samplePosts) {
+
+      at beforeEach (src/__tests__/posts.test.js:65:1)
+
+  ● listing posts › should return posts sorted by creation date descending by default
+
+    thrown: "Exceeded timeout of 5000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      63 | let createdSamplePosts = []
+      64 |
+    > 65 | beforeEach(async () => {
+         | ^
+      66 |   await Post.deleteMany({})
+      67 |   createdSamplePosts = []
+      68 |   for (const post of samplePosts) {
+
+      at beforeEach (src/__tests__/posts.test.js:65:1)
+
+  ● listing posts › should take into account provided sorting options    
+
+    thrown: "Exceeded timeout of 5000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      63 | let createdSamplePosts = []
+      64 |
+    > 65 | beforeEach(async () => {
+         | ^
+      66 |   await Post.deleteMany({})
+      67 |   createdSamplePosts = []
+      68 |   for (const post of samplePosts) {
+
+      at beforeEach (src/__tests__/posts.test.js:65:1)
+
+  ● listing posts › should be able to filter posts by author
+
+    thrown: "Exceeded timeout of 5000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      63 | let createdSamplePosts = []
+      64 |
+    > 65 | beforeEach(async () => {
+         | ^
+      66 |   await Post.deleteMany({})
+      67 |   createdSamplePosts = []
+      68 |   for (const post of samplePosts) {
+
+      at beforeEach (src/__tests__/posts.test.js:65:1)
+
+  ● listing posts › should be able to filter post by tag
+
+    thrown: "Exceeded timeout of 5000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      63 | let createdSamplePosts = []
+      64 |
+    > 65 | beforeEach(async () => {
+         | ^
+      66 |   await Post.deleteMany({})
+      67 |   createdSamplePosts = []
+      68 |   for (const post of samplePosts) {
+
+      at beforeEach (src/__tests__/posts.test.js:65:1)
+
+Test Suites: 1 failed, 1 total
+Tests:       8 failed, 8 total
+Snapshots:   0 total
+Time:        40.799 s, estimated 41 s
+Ran all test suites.
