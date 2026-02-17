@@ -31,6 +31,16 @@ describe('creating posts', () => {
     expect(foundPost.updatedAt).toBeInstanceOf(Date)
   })
 
+  test('with only title should succeed (tags optional)', async () => {
+    const post = { title: 'Title only post' }
+
+    const createdPost = await createPost(post)
+    const foundPost = await Post.findById(createdPost._id)
+
+    expect(foundPost.title).toBe(post.title)
+    expect(foundPost.tags).toEqual([]) // current behavior in your DB/model
+  })
+
   test('without title should fail', async () => {
     const post = {
       author: 'Daniel Bugl',
