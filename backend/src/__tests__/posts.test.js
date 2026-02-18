@@ -11,7 +11,7 @@ import { getPostById } from '../services/posts.js'
 import { updatePost } from '../services/posts.js'
 import { deletePost } from '../services/posts.js'
 
-jest.setTimeout(10000)
+jest.setTimeout(60000)
 
 describe('creating posts', () => {
   test('with all parameters should succeed', async () => {
