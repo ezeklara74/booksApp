@@ -1,3 +1,5 @@
 export default async function globalTeardown() {
-  await global.__MONGOINSTANCE.stop()
+  if (global.__MONGOD__) {
+    await global.__MONGOD__.stop()
+  }
 }

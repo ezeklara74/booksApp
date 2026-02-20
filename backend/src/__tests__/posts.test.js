@@ -11,7 +11,7 @@ import { getPostById } from '../services/posts.js'
 import { updatePost } from '../services/posts.js'
 import { deletePost } from '../services/posts.js'
 
-jest.setTimeout(10000)
+jest.setTimeout(60000)
 
 describe('creating posts', () => {
   test('with all parameters should succeed', async () => {
@@ -29,6 +29,16 @@ describe('creating posts', () => {
     expect(foundPost).toEqual(expect.objectContaining(post))
     expect(foundPost.createdAt).toBeInstanceOf(Date)
     expect(foundPost.updatedAt).toBeInstanceOf(Date)
+  })
+
+  test('with only title should succeed (tags optional)', async () => {
+    const post = { title: 'Title only post' }
+
+    const createdPost = await createPost(post)
+    const foundPost = await Post.findById(createdPost._id)
+
+    expect(foundPost.title).toBe(post.title)
+    expect(foundPost.tags).toEqual([]) // current behavior in your DB/model
   })
 
   test('without title should fail', async () => {

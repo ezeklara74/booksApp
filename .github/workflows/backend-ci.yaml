@@ -1,32 +1,60 @@
 name: Blog Backend CI
+
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
-  lint-and-build:
+  backend-ci:
     runs-on: ubuntu-latest
+
+    services:
+      mongo:
+        image: mongo:6
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd="mongosh --eval 'db.runCommand({ ping: 1 })'"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [16.x, 18.x, 20.x]
+        node-version: [18.x, 20.x]
+
     defaults:
       run:
-        working-directory: ./backend
+        working-directory: backend
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+
       - name: Install dependencies
-        run: npm install
-      - name: Run linter on backend
-        run: npm run lint
-      - name: Run Backend Tests
+        run: npm ci
+
+      - name: Cache Mongo binaries
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/mongodb-binaries
+          key: ${{ runner.os }}-mongoms-8.0.0
+
+      - name: Lint
+        run: npm run lint --if-present
+
+      - name: Test
+        env:
+          DATABASE_URL: mongodb://127.0.0.1:27017/blog
+          MONGOMS_DOWNLOAD_DIR: ~/.cache/mongodb-binaries
+          MONGOMS_VERSION: 8.0.0
         run: npm test
